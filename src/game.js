@@ -1,6 +1,7 @@
 import Gameboard from './gameboardFactory';
 import Player from './playerFactory';
 import gameboardRender from './gameboardRender';
+import Drag from './drag';
 import { elements } from './elements';
 
 const Game = () => {
@@ -10,6 +11,8 @@ const Game = () => {
   const playerOneBoard = Gameboard();
   const playerTwoBoard = Gameboard();
 
+  const drag = Drag(playerOne, playerOneBoard);
+
   const renderBothGrids = () => {
     gameboardRender.renderGrid(elements.playerOneGrid, playerOneBoard, playerOne.getType());
     gameboardRender.renderGrid(elements.playerTwoGrid, playerTwoBoard, playerTwo.getType());
@@ -17,6 +20,20 @@ const Game = () => {
 
   const renderPlayerOneFleet = () => {
     gameboardRender.renderFleet(playerOne.getFleet());
+    drag.addDragAndDropEventListeners();
+    addRotateEventListeners();
+  };
+
+  const addRotateEventListeners = () => {
+    const ships = document.querySelectorAll('.ship');
+    ships.forEach((ship) => {
+      ship.addEventListener('dblclick', (e) => {
+        const shipElement = e.target.parentElement;
+        const ship = playerOne.getFleet()[shipElement.dataset.ship];
+        ship.changeDirection();
+        shipElement.classList.toggle('vertical');
+      });
+    });
   };
 
   const addGridEventListeners = () => {
@@ -25,7 +42,6 @@ const Game = () => {
 
   const ctrlAttack = (e) => {
     const cell = e.target;
-    console.log(cell);
     if (cell.classList.contains('grid-cell')) {
       const y = cell.dataset.y;
       const x = cell.dataset.x;
@@ -41,17 +57,21 @@ const Game = () => {
       if (playerOneBoard.areAllShipsSunk()) winner = 'Computer';
       if (playerTwoBoard.areAllShipsSunk()) winner = 'You';
       elements.playerTwoGrid.removeEventListener('click', ctrlAttack);
+      gameboardRender.gameOver();
     };
   };
 
   const autoPlace = () => {
     playerOneBoard.autoPlaceFleet(playerOne.getFleet());
-    playerTwoBoard.autoPlaceFleet(playerTwo.getFleet());
+    //playerTwoBoard.autoPlaceFleet(playerTwo.getFleet());
     renderBothGrids();
+    gameboardRender.autoPlace();
   };
 
   const startGame = () => {
     addGridEventListeners();
+    if (playerTwo.getType() === 'computer') playerTwoBoard.autoPlaceFleet(playerTwo.getFleet());
+    gameboardRender.startGame();
   };
 
   const resetGame = () => {
@@ -65,7 +85,7 @@ const Game = () => {
     resetGame();
     renderBothGrids();
     renderPlayerOneFleet();
-    console.log(playerOneBoard.getBoard())
+    gameboardRender.playAgain();
   }
 
   return { renderBothGrids, renderPlayerOneFleet, autoPlace, startGame, playAgain };

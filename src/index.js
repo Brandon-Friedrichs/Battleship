@@ -14,8 +14,10 @@ let game = Game('one')
 
 game.renderBothGrids();
 game.renderPlayerOneFleet();
-game.autoPlace();
-game.startGame();
+
+elements.startGameBtn.addEventListener('click', () => {
+  game.startGame()
+});
 
 elements.playAgainBtn.addEventListener('click', () => {
   game.playAgain();

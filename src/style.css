@@ -81,7 +81,10 @@ body {
   display: flex;
   max-width: max-content;
   background-color: rgb(201, 201, 201);
-  
+}
+
+.vertical {
+  flex-direction: column;
 }
 
 .carrier {
@@ -124,6 +127,10 @@ body {
 
 
 
+
+.hidden {
+  display: none;
+}
 
 .interface-container {
   display: flex;
