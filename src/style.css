@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  background-color: #f3f3f3;
+}
+
+*, *::before, *::after {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+.splash-container {
+  display: flex;
+  height: 66vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.splash-title {
+  font-family: 'Bangers', cursive;
+  font-size: 10rem;
+}
+
+.btn {
+  background-color: hsl(30, 100%, 50%);
+  padding: .5em 1em;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: .2em;
+  color: #333;
+}
+
+.btn:hover, .btn:focus {
+  background-color: hsl(30, 100%, 40%);
+}
+
+.splash-btn {
+  margin-left: 2rem;
+  font-size: 2rem;
+}
+
+.splash-btn:first-child {
+  margin-left: 0;
+}
+
+
+
+
+.boards-container {
+  display: flex;
+  gap: 1rem;
+  padding: 1em;
+}
+
+.p1-grid {
+  display: flex;
+  width: 400px;
+  height: 400px;
+  flex-wrap: wrap;
+  background-color: hsl(280, 100%, 80%);
+}
+
+.p2-grid {
+  display: flex;
+  width: 400px;
+  height: 400px;
+  flex-wrap: wrap;
+  background-color: hsl(280, 100%, 80%);
+}
+
+.grid-cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+}
+
+.ship {
+  display: flex;
+  max-width: max-content;
+  background-color: rgb(201, 201, 201);
+  
+}
+
+.carrier {
+  width: 40px;
+  height: 40px;
+  background-color: purple;
+}
+
+.battleship {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(128, 128, 71);
+}
+
+.cruiser {
+  width: 40px;
+  height: 40px;
+  background-color: yellowgreen;
+}
+
+.submarine {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(223, 213, 79);
+}
+
+.destroyer {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(91, 50, 205);
+}
+
+.miss {
+  background-color: gray;
+}
+
+.hit {
+  background-color: red;
+}
+
+
+
+
+.interface-container {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
