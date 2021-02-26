@@ -32,6 +32,10 @@ const Game = () => {
         const ship = playerOne.getFleet()[shipElement.dataset.ship];
         ship.changeDirection();
         shipElement.classList.toggle('vertical');
+        shipElement.firstChild.classList.toggle('horizontal-head');
+        shipElement.firstChild.classList.toggle('vertical-head');
+        shipElement.lastChild.classList.toggle('horizontal-tail');
+        shipElement.lastChild.classList.toggle('vertical-tail');
       });
     });
   };

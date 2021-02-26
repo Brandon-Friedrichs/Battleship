@@ -15,7 +15,7 @@ const Drag = (playerOne, playerOneBoard) => {
 
   const dragDrop = (e) => {
     const cell = e.target;
-    console.log(e.target)
+    console.log(e.target);
 
     const playerOneShip = playerOne.getFleet()[draggedShip.dataset.ship];
     const isHorizontal = playerOneShip.getDirection() === 'horizontal';
@@ -30,8 +30,8 @@ const Drag = (playerOne, playerOneBoard) => {
       draggedShip.parentElement.removeChild(draggedShip);
     };
     if (playerOneBoard.areAllShipsPlaced()) {
-      gameboardRender.startGame();
-    }
+      gameboardRender.areAllShipsPlaced();
+    };
   };
 
   const dragOver = (e) => e.preventDefault();
